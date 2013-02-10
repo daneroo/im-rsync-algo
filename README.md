@@ -1,4 +1,7 @@
-# im-rsync-algo
+# Rsync Algorithm Components
+
+[![Build Status](https://travis-ci.org/daneroo/im-rsync-algo.png?branch=master)](https://travis-ci.org/daneroo/im-rsync-algo)
+
 
 This project aims to implement the parts of the rsync algorithm.
 
@@ -28,6 +31,8 @@ And to update the markdown flavored test result, in `./test-report.md`:
 	make test-report
 
 The project has been integrated with [travis](travis-ci.org) for continuous integration, (which gives us a pretty badge:), as [documented here](http://about.travis-ci.org/docs/user/languages/javascript-with-nodejs/)
+
+[![Build Status](https://travis-ci.org/daneroo/im-rsync-algo.png?branch=master)](https://travis-ci.org/daneroo/im-rsync-algo)
 
 ## TODO
 
