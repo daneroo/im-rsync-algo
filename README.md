@@ -9,13 +9,39 @@ Also, I am trying to get TDD style right, so testing is important.
 Some parts have been adapted from [the work of Mihai Tomescu &lt;matomesc@gmail.com&gt; & Tolga Tezel &lt;tolgatezel11@gmail.com&gt;](https://github.com/ttezel/anchor.git)
 
 ## Tests
+We have chosen [mocha](http://visionmedia.github.com/mocha/) for out test runner, and the **BDD** style  *describe/it* (although this can be mixed with **TDD**'s *suite/test*). 
+
+For assertions, we are start with baseline `assert` but [chai.js](http://chaijs.com/) is on the docket
+
+To run the tests, alternatively: 
+
+	npm test      # invoves the npm `script.test` attribute
+	make          # invokes the default target which is make test, with default spec reporter
+	make test REPORTER=dot  # which selects the reporter.
+
+To see a list of reporters:
+
+	./node_modules/.bin/mocha --reporters
+
+And to update the markdown flavored test result, in `./test-report.md`:
+
+	make test-report
 
 ## TODO
 
+Algorithm/Domain
+
+* Signature of hash: string vs uintXX vs buffer
+* Speed bench
+* Alternative implementations
+
+Project/Setup
+
+* npm module registration
+* Experiment TDD/BDD, and assertion style (chai.js)
 * travis-ci integration
-* make test REPORTER=list
-* doc make test-report
 * Figure out jscoverage, [help?](https://npmjs.org/package/mochawrapper)
+* browser usage, of module itself and test (`mocha init`, see chai.js site: API/test).
 
 ## References
 
