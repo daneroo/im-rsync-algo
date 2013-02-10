@@ -1,0 +1,22 @@
+{
+  "name": "rsync-algo",
+  "version": "0.0.1",
+  "description": "rsync algorithm components",
+  "keywords":["rsync","synchronisation"],
+  "author":"Daniel Lauzon <daniel.lauzon@gmail.com",
+  "repository": {
+    "type":"git",
+    "url":"git@github.com:daneroo/im-rsync-algo.git"
+  },
+  "dependencies": {
+    "bitstream":"0.0.x"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "main": "index",
+  "engines": { "node": ">= 0.8.0" },
+  "scripts": {
+    "test": "make"
+  } 
+}
