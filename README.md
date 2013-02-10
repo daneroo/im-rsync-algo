@@ -41,10 +41,15 @@ Algorithm/Domain
 * Signature of hash: string vs uintXX vs buffer
 * Speed bench
 * Alternative implementations
+* read through rsync source
+	* `generator.c:681 static int generate_and_send_sums`
+	* `sender.c`
+	* `match.c:353 void match_sums`
+	* `receiver.c:227 static int receive_data`
 
 Project/Setup
 
-# remove ttezel from copyright, leave as credit, after re-implementing `hash.js`
+* remove ttezel from copyright, leave as credit, after re-implementing `hash.js`
 * npm module registration
 * Experiment TDD/BDD, and assertion style (chai.js)
 * travis-ci integration
