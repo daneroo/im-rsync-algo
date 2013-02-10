@@ -4,7 +4,18 @@ This project aims to implement the parts of the rsync algorithm.
 
 First iteration, will work on buffers, next we will look at node 0.10 streams.
 
+Also, I am trying to get TDD style right, so testing is important.
+
 Some parts have been adapted from [the work of Mihai Tomescu &lt;matomesc@gmail.com&gt; & Tolga Tezel &lt;tolgatezel11@gmail.com&gt;](https://github.com/ttezel/anchor.git)
+
+## Tests
+
+## TODO
+
+* travis-ci integration
+* make test REPORTER=list
+* doc make test-report
+* Figure out jscoverage, [help?](https://npmjs.org/package/mochawrapper)
 
 ## References
 
