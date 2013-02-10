@@ -38,7 +38,6 @@ The project has been integrated with [travis](travis-ci.org) for continuous inte
 
 Algorithm/Domain
 
-* Signature of hash: string vs uintXX vs buffer
 * Speed bench
 * Alternative implementations
 * read through rsync source
@@ -46,6 +45,7 @@ Algorithm/Domain
 	* `sender.c`
 	* `match.c:353 void match_sums`
 	* `receiver.c:227 static int receive_data`
+* Signature of hash: string vs uintXX vs buffer
 
 Project/Setup
 
