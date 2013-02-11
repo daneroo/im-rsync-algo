@@ -14,7 +14,12 @@ function randBuffer(len){
 
 describe('Jenkins', function(){
   describe('Xunit', function(){
-    it('should report results in jenkins');
+    it('should report results in jenkins', function(){
+      assert(true);
+    });
+    it('should aggregate results in jenkins', function(){
+      assert(false);
+    });
   });
 });
 
