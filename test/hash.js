@@ -12,17 +12,6 @@ function randBuffer(len){
   return buf;  
 }
 
-describe('Jenkins', function(){
-  describe('Xunit', function(){
-    it('should report results in jenkins', function(){
-      assert(true);
-    });
-    it('should aggregate results in jenkins', function(){
-      assert(true);
-    });
-  });
-});
-
 describe('Hash', function(){
   describe('md5', function(){
     it('should return a known value for a "hello" string input', function(){
