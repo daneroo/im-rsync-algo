@@ -75,18 +75,39 @@ describe('Hash', function(){
     });
 
     it('should be able to calculate incrementally,repeatedly', function(){
-      var blocksize=1024;
+      var blocksize=1024;//*1024;
       var shifts=100;
       var buf = randBuffer(blocksize+shifts-1);
       var prev = null;
       for (var i=0;i<shifts;i++){
-      // var prev = hash.weak32(buf,null,i,i+blocksize)
-      var expected = hash.weak32(buf,null,i,i+blocksize);
-      var incremental = hash.weak32(buf,prev,i,i+blocksize);
-      assert.deepEqual(expected, incremental);
-      prev = incremental;
-    }
-  });
+        var expected = hash.weak32(buf,null,i,i+blocksize);
+        var incremental = hash.weak32(buf,prev,i,i+blocksize);
+        assert.deepEqual(expected, incremental);
+        prev = incremental;
+      }
+
+    });
+
+    it('should eventually create a 16bit collision', function(){
+      var blocksize=1024;
+      var shifts=1000;
+      var buf = randBuffer(blocksize+shifts-1);
+      var hashes = {};
+      var prev;
+      for (var i=0;i<shifts;i++){
+        var weak32 = hash.weak32(buf,prev,i,i+blocksize);
+        weak32.index=i;
+        var weak16 = weak32.b;
+        if (hashes[weak16]){
+          // console.log('got collision %d: %j : %j',i,hashes[weak16],weak32);
+          assert.equal(hashes[weak16].b,weak32.b);
+        }
+        hashes[weak16]=weak32;
+        prev = weak32;
+      }
+
+
+    });
 
     it('should check for invalid/default start/end values');
     it('should have a better signature');
