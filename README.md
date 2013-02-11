@@ -50,6 +50,7 @@ Algorithm/Domain
 Project/Setup
 
 * remove ttezel from copyright, leave as credit, after re-implementing `hash.js`
+* integrate into jenkins@solo
 * npm module registration
 * Experiment TDD/BDD, and assertion style (chai.js)
 * travis-ci integration
