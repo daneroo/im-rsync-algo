@@ -5,7 +5,7 @@
 
 This project aims to implement the parts of the rsync algorithm.
 
-First iteration, will work on buffers, next we will look at node 0.10 streams.
+First iteration, will work on buffers, then we will look at node 0.10 streams.
 
 Also, I am trying to get TDD style right, so testing is important.
 
