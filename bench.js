@@ -61,7 +61,7 @@ iterations*=100;
     }
     var delta = (new Date().getTime() - startTime)/1000;
     var kbs = (blocksize/MB)/(delta/iterations);
-    console.log("weak32(%d)x%d %d MB/s - %ds.",blocksize,iterations,kbs,delta);
+    console.log("weak32tz(%d)x%d %d MB/s - %ds.",blocksize,iterations,kbs,delta);
   };
 })();
 
