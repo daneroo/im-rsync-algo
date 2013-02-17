@@ -115,7 +115,3 @@ describe('Hash', function(){
   });
 
 });
-
-for (var j=0;j<30;j++){
-  // console.log('r',randBuffer(30).toString('hex'));
-}

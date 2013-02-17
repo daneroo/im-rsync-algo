@@ -1,5 +1,6 @@
 var hash = require("./lib/hash");
 
+var MB=1024*1024;
 function randByte(){ return Math.floor(Math.random()*(256));}
 function randBuffer(len){ 
   var buf = new Buffer(len);
@@ -23,8 +24,8 @@ var blockSizeRef=10240;
       var weak32 = hash.weak32(buf);
     }
     var delta = (new Date().getTime() - startTime)/1000;
-    var kbs = (blocksize/1024)/(delta/iterations);
-    console.log("weak32(%d)x%d %d kB/s",blocksize,iterations,kbs);
+    var kbs = (blocksize/MB)/(delta/iterations);
+    console.log("weak32(%d)x%d %d MB/s",blocksize,iterations,kbs);
   };
 })();
 
@@ -39,14 +40,14 @@ console.log();
       var weak32 = hash.weak32(buf,null,i,i+blocksize);
     }
     var delta = (new Date().getTime() - startTime)/1000;
-    var kbs = (blocksize/1024)/(delta/iterations);
-    console.log("weak32(%d)x%d %d kB/s",blocksize,iterations,kbs);
+    var kbs = (blocksize/MB)/(delta/iterations);
+    console.log("weak32(%d)x%d %d MB/s",blocksize,iterations,kbs);
   };
 })();
 
 console.log();
 
-iterations*=1;
+iterations*=100;
 (function(){
   for (var j = 0; j < runs; j++) {
     var blocksize=(blockSizeRef*1024);
@@ -59,8 +60,8 @@ iterations*=1;
       prev=weak32;
     }
     var delta = (new Date().getTime() - startTime)/1000;
-    var kbs = (blocksize/1024)/(delta/iterations);
-    console.log("weak32(%d)x%d %d kB/s - %ds.",blocksize,iterations,kbs,delta);
+    var kbs = (blocksize/MB)/(delta/iterations);
+    console.log("weak32(%d)x%d %d MB/s - %ds.",blocksize,iterations,kbs,delta);
   };
 })();
 
