@@ -66,26 +66,43 @@ describe('Hash', function(){
       assert.deepEqual(hash.weak32(buf123, null, 3,5), hash.weak32(buf234,null, 2,4));
     });
 
+    describe('zz1',function(){
     it('should be able to calculate incrementally', function(){
-      var buf = randBuffer([1,2,3,4]);
-      var prev = hash.weak32(buf,null,1,3)
-      var expected = hash.weak32(buf,null,2,4);
-      var incremental = hash.weak32(buf,prev,2,4);
+      // var buf = new Buffer([1,2,3,4]);
+      var len=1024;
+      var buf = randBuffer(len+1);
+      var prev = hash.weak32(buf,null,1,len-1)
+      var expected = hash.weak32(buf,null,2,len);
+      var incremental = hash.weak32(buf,prev,2,len);
+      // console.log('\n1',prev,'\n',expected,'\n',incremental);
       assert.deepEqual(expected, incremental);
+
+      prev=incremental;
+      expected = hash.weak32(buf,null,3,len+1);
+      incremental = hash.weak32(buf,prev,3,len+1);
+      // console.log('\n2',prev,'\n',expected,'\n',incremental);
+
+    });
     });
 
+    describe('zz2',function(){
     it('should be able to calculate incrementally,repeatedly', function(){
-      var blocksize=1024;//*1024;
-      var shifts=100;
-      var buf = randBuffer(blocksize+shifts-1);
+      var blocksize=1024;
+      var shifts=10000;
+      var buf = randBuffer(blocksize+shifts+1);
       var prev = null;
       for (var i=0;i<shifts;i++){
         var expected = hash.weak32(buf,null,i,i+blocksize);
         var incremental = hash.weak32(buf,prev,i,i+blocksize);
+        // var expected = hash.weak32ttezel(buf,null,i,i+blocksize);
+        // var incremental = hash.weak32ttezel(buf,prev,i,i+blocksize);
+
+        // console.log('\n'+i,prev,'\n',expected,'\n',incremental);
         assert.deepEqual(expected, incremental);
         prev = incremental;
       }
 
+    });
     });
 
     it('should eventually create a 16bit collision', function(){
