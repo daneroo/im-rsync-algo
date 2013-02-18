@@ -9,7 +9,7 @@ First iteration, will work on buffers, then we will look at node 0.10 streams.
 
 Also, I am trying to get TDD style right, so testing is important.
 
-Some parts have been adapted from [the work of Mihai Tomescu &lt;matomesc@gmail.com&gt; & Tolga Tezel &lt;tolgatezel11@gmail.com&gt;](https://github.com/ttezel/anchor.git)
+Some parts have been adapted from [the work of Mihai Tomescu &lt;matomesc@gmail.com&gt; & Tolga Tezel &lt;tolgatezel11@gmail.com&gt; in their github repo: ttezel/achor](https://github.com/ttezel/anchor.git).
 
 ## Tests
 We have chosen [mocha](http://visionmedia.github.com/mocha/) for out test runner, and the **BDD** style  *describe/it* (although this can be mixed with **TDD**'s *suite/test*). 
@@ -49,7 +49,6 @@ Algorithm/Domain
 
 Project/Setup
 
-* remove ttezel from copyright, leave as credit, after re-implementing `hash.js`
 * integrate into jenkins@solo
 * npm module registration
 * Experiment TDD/BDD, and assertion style (chai.js)
@@ -67,9 +66,6 @@ Project/Setup
 (The MIT License)
 
 Copyright (c) 2013 Daniel Lauzon &lt;daniel.lauzon@gmail.com&gt;
-
-Copyright (c) 2011 Mihai Tomescu &lt;matomesc@gmail.com&gt; & Tolga Tezel &lt;tolgatezel11@gmail.com&gt;
-
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
