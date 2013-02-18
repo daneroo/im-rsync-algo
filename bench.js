@@ -48,20 +48,17 @@ console.log();
 
 console.log();
 
-runs*=10;
 iterations*=1000;
 (function(){
   console.log('rolling sums - hash all positions')
   for (var j = 0; j < runs; j++) {
     var blocksize=(blockSizeRef*1024);
-    // var blocksize=(blockSizeRef)<<j;
 
     var buf = randBuffer(blocksize+iterations);
     var startTime=new Date().getTime();
-    var prev
+    var prev;
     for (var i=0;i<iterations;i++){
       var weak32 = hash.weak32(buf,prev,i,i+blocksize);
-      // var weak32 = hash.weak32ttezel(buf,prev,i,i+blocksize);
       prev=weak32;
     }
     var delta = (new Date().getTime() - startTime)/1000;
@@ -69,6 +66,23 @@ iterations*=1000;
     console.log("weak32-roll(%d+%d) %d MB/s - %ds.",blocksize,iterations,mbs.toFixed(1),delta);
   };
 })();
+iterations/=1000;
 
 
+console.log();
+(function(){
+  console.log('collision rates')
+  return;
+
+  for (var j = 0; j < runs; j++) {
+    var blocksize=(blockSizeRef);
+    var buf = randBuffer(blocksize+iterations);
+    var startTime=new Date().getTime();
+    var prev
+    for (var i=0;i<iterations;i++){
+      var weak32 = hash.weak32(buf,prev,i,i+blocksize);
+      prev=weak32;
+    }
+  };
+})();
 

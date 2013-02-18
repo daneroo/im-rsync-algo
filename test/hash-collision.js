@@ -18,7 +18,7 @@ describe('Hash', function(){
         weak32.index=i;
         var weak16 = weak32.b;
         if (hashes[weak16]){
-          console.log('got collision %d: %j : %j',i,hashes[weak16],weak32);
+          // console.log('got collision %d: %j : %j',i,hashes[weak16],weak32);
           collisions++;
           assert.equal(hashes[weak16].b,weak32.b);
         }
