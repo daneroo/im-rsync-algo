@@ -1,6 +1,7 @@
 var hash = require("./lib/hash");
 
 var MB=1024*1024;
+var GB=1024*1024*1024;
 function randByte(){ return Math.floor(Math.random()*(256));}
 function randBuffer(len){ 
   var buf = new Buffer(len);
@@ -24,8 +25,8 @@ var blockSizeRef=10240;
       var weak32 = hash.weak32(buf);
     }
     var delta = (new Date().getTime() - startTime)/1000;
-    var kbs = (blocksize/MB)/(delta/iterations);
-    console.log("weak32(%d)x%d %d MB/s",blocksize,iterations,kbs);
+    var mbs = (blocksize/MB)/(delta/iterations);
+    console.log("weak32(%d)x%d %d MB/s - %ds.",blocksize,iterations,mbs.toFixed(1),delta);
   };
 })();
 
@@ -40,28 +41,32 @@ console.log();
       var weak32 = hash.weak32(buf,null,i,i+blocksize);
     }
     var delta = (new Date().getTime() - startTime)/1000;
-    var kbs = (blocksize/MB)/(delta/iterations);
-    console.log("weak32(%d)x%d %d MB/s",blocksize,iterations,kbs);
+    var mbs = (blocksize/MB)/(delta/iterations);
+    console.log("weak32(%d)x%d %d MB/s - %ds.",blocksize,iterations,mbs.toFixed(1),delta);
   };
 })();
 
 console.log();
 
-iterations*=100;
+runs*=10;
+iterations*=1000;
 (function(){
+  console.log('rolling sums - hash all positions')
   for (var j = 0; j < runs; j++) {
     var blocksize=(blockSizeRef*1024);
+    // var blocksize=(blockSizeRef)<<j;
 
     var buf = randBuffer(blocksize+iterations);
     var startTime=new Date().getTime();
     var prev
     for (var i=0;i<iterations;i++){
-      var weak32 = hash.weak32ttezel(buf,prev,i,i+blocksize);
+      var weak32 = hash.weak32(buf,prev,i,i+blocksize);
+      // var weak32 = hash.weak32ttezel(buf,prev,i,i+blocksize);
       prev=weak32;
     }
     var delta = (new Date().getTime() - startTime)/1000;
-    var kbs = (blocksize/MB)/(delta/iterations);
-    console.log("weak32tz(%d)x%d %d MB/s - %ds.",blocksize,iterations,kbs,delta);
+    var mbs = ((blocksize+iterations)/MB)/(delta);
+    console.log("weak32-roll(%d+%d) %d MB/s - %ds.",blocksize,iterations,mbs.toFixed(1),delta);
   };
 })();
 

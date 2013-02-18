@@ -66,7 +66,6 @@ describe('Hash', function(){
       assert.deepEqual(hash.weak32(buf123, null, 3,5), hash.weak32(buf234,null, 2,4));
     });
 
-    describe('zz1',function(){
     it('should be able to calculate incrementally', function(){
       // var buf = new Buffer([1,2,3,4]);
       var len=1024;
@@ -76,27 +75,17 @@ describe('Hash', function(){
       var incremental = hash.weak32(buf,prev,2,len);
       // console.log('\n1',prev,'\n',expected,'\n',incremental);
       assert.deepEqual(expected, incremental);
-
-      prev=incremental;
-      expected = hash.weak32(buf,null,3,len+1);
-      incremental = hash.weak32(buf,prev,3,len+1);
-      // console.log('\n2',prev,'\n',expected,'\n',incremental);
-
-    });
     });
 
     describe('zz2',function(){
     it('should be able to calculate incrementally,repeatedly', function(){
       var blocksize=1024;
-      var shifts=10000;
+      var shifts=100000;
       var buf = randBuffer(blocksize+shifts+1);
       var prev = null;
       for (var i=0;i<shifts;i++){
         var expected = hash.weak32(buf,null,i,i+blocksize);
         var incremental = hash.weak32(buf,prev,i,i+blocksize);
-        // var expected = hash.weak32ttezel(buf,null,i,i+blocksize);
-        // var incremental = hash.weak32ttezel(buf,prev,i,i+blocksize);
-
         // console.log('\n'+i,prev,'\n',expected,'\n',incremental);
         assert.deepEqual(expected, incremental);
         prev = incremental;
