@@ -77,10 +77,9 @@ describe('Hash', function(){
       assert.deepEqual(expected, incremental);
     });
 
-    describe('zz2',function(){
     it('should be able to calculate incrementally,repeatedly', function(){
       var blocksize=1024;
-      var shifts=100000;
+      var shifts=10000;
       var buf = randBuffer(blocksize+shifts+1);
       var prev = null;
       for (var i=0;i<shifts;i++){
@@ -91,7 +90,6 @@ describe('Hash', function(){
         prev = incremental;
       }
 
-    });
     });
 
     it('should eventually create a 16bit collision', function(){
