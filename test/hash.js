@@ -13,15 +13,15 @@ function randBuffer(len){
 }
 
 describe('Hash', function(){
-  describe('md5', function(){
+  describe('strong', function(){
     it('should return a known value for a "hello" string input', function(){
-      assert.equal(hash.md5("hello"), "5d41402abc4b2a76b9719d911017c592");
+      assert.equal(hash.strong("hello"), "5d41402abc4b2a76b9719d911017c592");
     });
     it('should return a known value for a "hello" buffer input', function(){
-      assert.equal(hash.md5(new Buffer("hello")), "5d41402abc4b2a76b9719d911017c592");
+      assert.equal(hash.strong(new Buffer("hello")), "5d41402abc4b2a76b9719d911017c592");
     });
     it('should not return an empty value for a known imput', function(){
-      assert.notEqual(hash.md5("hello"), "");
+      assert.notEqual(hash.strong("hello"), "");
     });
     it('should test more things')
   });
