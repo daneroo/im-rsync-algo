@@ -2,30 +2,9 @@ var assert = require("assert");
 
 // Should probably require the top level index.js ???
 var hash = require("../lib/hash");
-
-function randByte(){ return Math.floor(Math.random()*(256));}
-function randBuffer(len){ 
-  var buf = new Buffer(len);
-  for (var i = buf.length - 1; i >= 0; i--) {
-    buf[i] = randByte();
-  }
-  return buf;  
-}
+var randBuffer = require("./helper").randBuffer;
 
 describe('Hash', function(){
-  describe('strong', function(){
-    it('should return a known value for a "hello" string input', function(){
-      assert.equal(hash.strong("hello"), "5d41402abc4b2a76b9719d911017c592");
-    });
-    it('should return a known value for a "hello" buffer input', function(){
-      assert.equal(hash.strong(new Buffer("hello")), "5d41402abc4b2a76b9719d911017c592");
-    });
-    it('should not return an empty value for a known imput', function(){
-      assert.notEqual(hash.strong("hello"), "");
-    });
-    it('should test more things')
-  });
-
   describe('weak32', function(){
     it('should return a known value for a "hello" buffer input', function(){
       assert.deepEqual(hash.weak32(new Buffer("hello")), {"a":532,"b":1575,"sum":103219732});
@@ -67,13 +46,11 @@ describe('Hash', function(){
     });
 
     it('should be able to calculate incrementally', function(){
-      // var buf = new Buffer([1,2,3,4]);
       var len=1024;
       var buf = randBuffer(len+1);
       var prev = hash.weak32(buf,null,1,len-1)
       var expected = hash.weak32(buf,null,2,len);
       var incremental = hash.weak32(buf,prev,2,len);
-      // console.log('\n1',prev,'\n',expected,'\n',incremental);
       assert.deepEqual(expected, incremental);
     });
 
@@ -85,36 +62,11 @@ describe('Hash', function(){
       for (var i=0;i<shifts;i++){
         var expected = hash.weak32(buf,null,i,i+blocksize);
         var incremental = hash.weak32(buf,prev,i,i+blocksize);
-        // console.log('\n'+i,prev,'\n',expected,'\n',incremental);
         assert.deepEqual(expected, incremental);
         prev = incremental;
       }
-
     });
 
-    it('should eventually create a 16bit collision', function(){
-      var blocksize=1024;
-      var shifts=1000;
-      var buf = randBuffer(blocksize+shifts-1);
-      var hashes = {};
-      var prev;
-      for (var i=0;i<shifts;i++){
-        var weak32 = hash.weak32(buf,prev,i,i+blocksize);
-        weak32.index=i;
-        var weak16 = weak32.b;
-        if (hashes[weak16]){
-          // console.log('got collision %d: %j : %j',i,hashes[weak16],weak32);
-          assert.equal(hashes[weak16].b,weak32.b);
-        }
-        hashes[weak16]=weak32;
-        prev = weak32;
-      }
-
-
-    });
-
-    it('should check for invalid/default start/end values');
-    it('should have a better signature');
 
   });
 
