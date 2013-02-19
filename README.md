@@ -43,6 +43,7 @@ Algorithm/Domain
 	* test (even if in test)
 	* use in test
 	* use in bench
+	* use in collision
 * seedable random: too slow didn't workout: 
 	* [node-mersenne](https://github.com/jwatte/node-mersenne) (slow)
 	* [chancejs](https://github.com/abe33/chancejs) (slow+coffee)
