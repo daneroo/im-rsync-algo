@@ -63,12 +63,12 @@ function timeit(runs,iterations,name,bytesForRun,setupForRun,f){
     }
     return buf;  
   });
-  timeit(runs,iterations,'Math.rnd',blocksize,setupForRun,function(){
+  timeit(runs,iterations,'Math.rnd',bytesForRun,setupForRun,function(){
     for (var bb=0;bb<blocksize;bb++){
       var v = Math.floor(Math.random()*(256))
     }
   });
-  timeit(runs,iterations,'randByt',blocksize,setupForRun,function(){
+  timeit(runs,iterations,'randByt',bytesForRun,setupForRun,function(){
     for (var bb=0;bb<blocksize;bb++){
       randByte();
     }
