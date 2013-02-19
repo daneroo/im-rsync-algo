@@ -38,11 +38,15 @@ The project has been integrated with [travis](travis-ci.org) for continuous inte
 
 Algorithm/Domain
 
-* seedable random
-	* [node-mersenne](https://github.com/jwatte/node-mersenne)
-	* [chancejs](https://github.com/abe33/chancejs)
-	* [alea](https://github.com/coverslide/node-alea)
-* Alternative implementations
+* Refactor bench with timeit -> MS/s
+* Generator into helper
+	* test (even if in test)
+	* use in test
+	* use in bench
+* seedable random: too slow didn't workout: 
+	* [node-mersenne](https://github.com/jwatte/node-mersenne) (slow)
+	* [chancejs](https://github.com/abe33/chancejs) (slow+coffee)
+	* [alea](https://github.com/coverslide/node-alea) slow:30MB/s
 * read through rsync source
 	* `generator.c:681 static int generate_and_send_sums`
 	* `sender.c`
