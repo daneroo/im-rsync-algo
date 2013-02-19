@@ -41,21 +41,25 @@ console.log();
   // var gen = new Generator(1024,4096);
   var prev;
   var it=0;
+  hashesA={};
+  hashesB={};
+
   while (true) {
     // {buf,start,end}
     var g = gen.next();
-    var part = g.buffer.toString('hex',g.start,g.end);
+    // var part = g.buffer.toString('hex',g.start,g.end);
     // console.log('computed on %s - %d,%d',part,g.start,g.end);
 
-    var expected = hash.weak32(g.buffer,null,g.start,g.end);
+    // var expected = hash.weak32(g.buffer,null,g.start,g.end);
     var incremental = hash.weak32(g.buffer,prev,g.start,g.end);
-    assert.deepEqual(expected, incremental);
+    // assert.deepEqual(expected, incremental);
 
-    if (it%1000==0)console.log('w32',it,expected,incremental);
+    if (it%MB==0)console.log('w32',it,incremental);
+    if (it%GB==0)console.log('---GB----');
+    if (it%GB==0 && it>0)process.exit();
 
     prev = incremental;
     it++;
-
 
   } 
 
