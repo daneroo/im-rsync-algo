@@ -38,7 +38,10 @@ The project has been integrated with [travis](travis-ci.org) for continuous inte
 
 Algorithm/Domain
 
-* Speed bench
+* seedable random
+	* [node-mersenne](https://github.com/jwatte/node-mersenne)
+	* [chancejs](https://github.com/abe33/chancejs)
+	* [alea](https://github.com/coverslide/node-alea)
 * Alternative implementations
 * read through rsync source
 	* `generator.c:681 static int generate_and_send_sums`
