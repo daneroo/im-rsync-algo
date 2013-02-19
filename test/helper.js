@@ -8,5 +8,6 @@ function randBuffer(len){
 }
 
 module.exports = {
+  randByte: randByte,
   randBuffer: randBuffer
 };
