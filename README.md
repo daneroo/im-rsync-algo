@@ -38,7 +38,6 @@ The project has been integrated with [travis](travis-ci.org) for continuous inte
 
 Algorithm/Domain
 
-* Refactor bench with timeit -> MS/s
 * Generator into helper
 	* test (even if in test)
 	* use in test
