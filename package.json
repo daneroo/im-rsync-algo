@@ -9,7 +9,8 @@
     "url":"git@github.com:daneroo/im-rsync-algo.git"
   },
   "dependencies": {
-    "bitstream":"0.0.x"
+    "bitstream":"0.0.x",
+    "sprintf":"0.1.x"
   },
   "devDependencies": {
     "mocha": "*"
