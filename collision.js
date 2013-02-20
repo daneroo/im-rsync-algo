@@ -18,7 +18,7 @@ console.log();
   var hashesA={};
   var hashesB={};
   var collisions=0;
-
+  var shownKeys=0;
   while (true) {
     // g:=={buffer,start,end}
     var g = gen.next();
@@ -27,7 +27,11 @@ console.log();
     if (hashesA[weak32.a]){
       collisions++;
       // console.log('got collision %d/%d: %j',collisions,it,hashesA[weak32.a]);
-      console.log('keys',Object.keys(hashesA).length);
+      var keys=Object.keys(hashesA).length;
+      if (keys>shownKeys){
+        console.log('keys',keys,'it',it);
+        shownKeys=keys;
+      }
       // assert.equal(hashesA[weak32.a].a,weak32.a);
     } else {
       weak32.firstIndex=it;
