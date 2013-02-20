@@ -1,9 +1,11 @@
+"use strict";
+
 var hash = require("./lib/hash");
 var sprintf = require('sprintf').sprintf;
 
 // Just playing with timing with different definition scopes.
-randBuffer = require('./test/helper').randBuffer;
-randByte = require('./test/helper').randByte;
+var randBuffer = require('./test/helper').randBuffer;
+var randByte = require('./test/helper').randByte;
 function randByte2(){ return Math.floor(Math.random()*(256));}
 function randBuffer2(len){ 
   var buf = new Buffer(len);
@@ -19,7 +21,7 @@ var GB=1024*1024*1024;
 
 // Pure duck-typing implementation taken from Underscore.js.
 function isFunction(object) {
- return !!(object && object.constructor && object.call && object.apply);
+  return !!(object && object.constructor && object.call && object.apply);
 }
 
 function timeit(runs,iterations,name,bytesForRun,setupForRun,f){
