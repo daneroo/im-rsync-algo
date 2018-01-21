@@ -12,7 +12,7 @@ Also, I am trying to get TDD style right, so testing is important.
 Some parts have been adapted from [the work of Mihai Tomescu &lt;matomesc@gmail.com&gt; & Tolga Tezel &lt;tolgatezel11@gmail.com&gt; in their github repo: ttezel/achor](https://github.com/ttezel/anchor.git).
 
 ## Tests
-We have chosen [mocha](http://visionmedia.github.com/mocha/) for out test runner, and the **BDD** style  *describe/it* (although this can be mixed with **TDD**'s *suite/test*). 
+We have chosen [mocha](http://mochajs.org/) for out test runner, and the **BDD** style  *describe/it* (although this can be mixed with **TDD**'s *suite/test*). 
 
 For assertions, we are start with baseline `assert` but [chai.js](http://chaijs.com/) is on the docket
 
