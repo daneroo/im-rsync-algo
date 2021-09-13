@@ -1,8 +1,5 @@
 # Rsync Algorithm Components
 
-[![Build Status](https://travis-ci.org/daneroo/im-rsync-algo.png?branch=master)](https://travis-ci.org/daneroo/im-rsync-algo)
-
-
 This project aims to implement the parts of the rsync algorithm.
 
 First iteration, will work on buffers, then we will look at node 0.10 streams.
